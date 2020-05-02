@@ -69,3 +69,4 @@ kubectl apply -f __build__/k8s/wallclocks/templates/timezones.yaml
 - Handling cleanups
 - Performance optimisation
 - Multiple controller support
+- Extra metadata
