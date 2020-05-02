@@ -1,0 +1,41 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: timezones.projectjudge.k8s.io
+spec:
+  group: projectjudge.k8s.io
+  version: v1alpha1
+  names:
+    kind: Timezone
+    plural: timezones
+  scope: Cluster
+  validation:
+    openAPIV3Schema:
+      properties:
+        spec:
+          properties:
+            timezones:
+              type: array
+              items:
+                type: string
+              minItems: 1
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: wallclocks.projectjudge.k8s.io
+spec:
+  group: projectjudge.k8s.io
+  version: v1alpha1
+  names:
+    kind: WallClock
+    plural: wallclocks
+  scope: Cluster
+  validation:
+    openAPIV3Schema:
+      properties:
+        spec:
+          timezone:
+            type: string
+  subresources:
+    status: {}

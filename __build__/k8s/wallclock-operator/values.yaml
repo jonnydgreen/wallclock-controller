@@ -1,0 +1,20 @@
+nameOverride: ""
+fullnameOverride: ""
+serviceAccount:
+  create: true
+  annotations: {}
+  name:
+
+controller:
+  replicaCount: 1
+  image:
+    repository: projectjudge/wallclock-controller
+    tag: latest
+    pullPolicy: IfNotPresent
+  imagePullSecrets: []
+  podSecurityContext: {}
+  securityContext: {}
+  resources: {}
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}

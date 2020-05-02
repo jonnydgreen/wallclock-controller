@@ -1,0 +1,24 @@
+apiVersion: skaffold/v2beta2
+kind: Config
+build:
+  # artifacts:
+  # - image: projectjudge/wallclock-controller
+  local:
+    push: false
+deploy:
+  helm:
+    releases:
+      - name: wallclock-operator
+        chartPath: __build__/k8s/wallclock-operator
+        namespace: kube-system
+        wait: true
+        skipBuildDependencies: true
+        imageStrategy:
+          helm: {}
+        # values:
+        #   controller.image: projectjudge/wallclock-controller
+      - name: wallclocks
+        chartPath: __build__/k8s/wallclocks
+        namespace: default
+        wait: true
+        skipBuildDependencies: true

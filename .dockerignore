@@ -1,0 +1,11 @@
+__build__
+.vscode
+docs
+hack
+.helm-version
+.skaffold-version
+skaffold.yaml
+Makefile
+README.md
+.git
+wallclock-controller
