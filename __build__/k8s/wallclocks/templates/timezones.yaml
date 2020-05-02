@@ -15,14 +15,3 @@ spec:
   timezones:
     - America/Los_Angeles
     - Europe/London
----
-apiVersion: projectjudge.k8s.io/v1alpha1
-kind: Timezone
-metadata:
-  name: even-more-clocks
-spec:
-  timezones:
-    - Europe/Berlin
-    - Europe/Budapest
-    - Europe/Budapest
-    - Africa/Cairo

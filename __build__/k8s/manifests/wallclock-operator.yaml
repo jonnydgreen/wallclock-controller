@@ -1,0 +1,51 @@
+---
+# Source: wallclock-operator/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: wallclock-operators-wallclock-operator
+  labels:
+    helm.sh/chart: wallclock-operator-0.1.0
+    app.kubernetes.io/name: wallclock-operator
+    app.kubernetes.io/instance: wallclock-operators
+    app.kubernetes.io/version: "latest"
+    app.kubernetes.io/managed-by: Helm
+---
+# Source: wallclock-operator/templates/deployment-controller.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wallclock-operators-wallclock-operator
+  labels:
+    helm.sh/chart: wallclock-operator-0.1.0
+    app.kubernetes.io/name: wallclock-operator
+    app.kubernetes.io/instance: wallclock-operators
+    app.kubernetes.io/version: "latest"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: wallclock-operator
+      app.kubernetes.io/instance: wallclock-operators
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: wallclock-operator
+        app.kubernetes.io/instance: wallclock-operators
+    spec:
+      serviceAccountName: wallclock-operators-wallclock-operator
+      securityContext:
+        {}
+      containers:
+        - name: wallclock-operator
+          securityContext:
+            {}
+          image: "projectjudge/wallclock-controller:latest"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          resources:
+            {}

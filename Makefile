@@ -18,12 +18,14 @@ endef
 #############################
 # PHONIES
 #############################
-.PHONY: all before_deploy clean
+.PHONY: simple-deploy before-deploy deploy
 
 #############################
 # TARGETS
 #############################
-all: before-deploy deploy
+simple-deploy:
+	$(call header,SIMPLE DEPLOY...)
+	$(SHELL) $(BUILD_SCRIPTS)/simple_deploy.sh $(LOG_LEVEL) $(DEV_CRONJOB)
 
 deploy: before-deploy
 	$(call header,DEPLOYING...)

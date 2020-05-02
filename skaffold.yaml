@@ -1,8 +1,8 @@
 apiVersion: skaffold/v2beta2
 kind: Config
 build:
-  # artifacts:
-  # - image: projectjudge/wallclock-controller
+  artifacts:
+  - image: projectjudge/wallclock-controller
   local:
     push: false
 deploy:
@@ -15,8 +15,8 @@ deploy:
         skipBuildDependencies: true
         imageStrategy:
           helm: {}
-        # values:
-        #   controller.image: projectjudge/wallclock-controller
+        values:
+          controller.image: projectjudge/wallclock-controller
       - name: wallclocks
         chartPath: __build__/k8s/wallclocks
         namespace: default

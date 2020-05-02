@@ -1,0 +1,20 @@
+---
+# Source: wallclocks/templates/timezones.yaml
+apiVersion: projectjudge.k8s.io/v1alpha1
+kind: Timezone
+metadata:
+  name: some-clocks
+spec:
+  timezones:
+    - America/Los_Angeles
+    - Asia/Singapore
+---
+# Source: wallclocks/templates/timezones.yaml
+apiVersion: projectjudge.k8s.io/v1alpha1
+kind: Timezone
+metadata:
+  name: more-clocks
+spec:
+  timezones:
+    - America/Los_Angeles
+    - Europe/London

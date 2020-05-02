@@ -35,7 +35,8 @@ spec:
     openAPIV3Schema:
       properties:
         spec:
-          timezone:
-            type: string
+          properties:
+            timezone:
+              type: string
   subresources:
     status: {}
